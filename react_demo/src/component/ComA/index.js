@@ -1,5 +1,6 @@
 import React from 'react'
 import {StyleSheet, Text} from 'react-native'
+import {connect} from 'react-redux'
 
 const styles = StyleSheet.create({
     buttonStyle: {
@@ -17,14 +18,26 @@ const styles = StyleSheet.create({
     }
 })
 
-const handleClick  = () => {
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        sendAction: () => {
+            dispatch({
+                type: "add_action"
+            })
+        }
+    }
 }
 
 class ComA extends React.Component {
+
+handleClick  = () => {
+    this.props.sendAction()
+}
+
     render = () => {
         return <Text style = {styles.buttonStyle} onClick = {this.handleClick}>+</Text>
     }
 }
 
-export default connect(null, )(ComA)
+export default connect(null, mapDispatchToProps)(ComA)

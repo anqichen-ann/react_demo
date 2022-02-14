@@ -4,5 +4,13 @@ const initState = {
 }
 
 export default function reducer(state = initState, action) {
-    return state;
+    switch (action.type) {
+        case "add_action" :
+            return  {
+                count: state.count+1
+            }
+            default:
+                return state
+    }
+    
 }

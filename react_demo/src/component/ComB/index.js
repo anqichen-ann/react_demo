@@ -1,5 +1,7 @@
 import React from 'react'
 import {StyleSheet, Text} from 'react-native'
+import {connect} from 'react-redux'
+
 
 const styles = StyleSheet.create({
     textStyle: {
@@ -15,8 +17,15 @@ const styles = StyleSheet.create({
     }
 })
 
-export default class ComB extends React.Component {
+const mapStateToProps = state => {
+    return state;
+}
+
+class ComB extends React.Component {
     render = () => {
-        return <Text style = {styles.textStyle}>0</Text>
+        console.log('COMB:' + this.props)
+    return <Text style = {styles.textStyle}>{this.props.count}</Text>
     }
 }
+
+export default connect(mapStateToProps)(ComB)
